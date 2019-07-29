@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.89
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{18DE22D4-DDF6-42FC-A96C-9BC29BA87651}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentValidation.Validators.Polymorphic", "src\FluentValidation.Validators.Polymorphic\FluentValidation.Validators.Polymorphic.csproj", "{17244AE2-DEC6-4C4B-B291-8023CD3B184A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17244AE2-DEC6-4C4B-B291-8023CD3B184A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17244AE2-DEC6-4C4B-B291-8023CD3B184A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17244AE2-DEC6-4C4B-B291-8023CD3B184A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17244AE2-DEC6-4C4B-B291-8023CD3B184A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{17244AE2-DEC6-4C4B-B291-8023CD3B184A} = {18DE22D4-DDF6-42FC-A96C-9BC29BA87651}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E06EA25E-6729-4E46-AEE0-96AE6AC59FDE}
+	EndGlobalSection
+EndGlobal

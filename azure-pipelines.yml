@@ -1,0 +1,49 @@
+# Build ASP.NET Core project using Azure Pipelines
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core?view=vsts
+name: 1.0$(rev:.r)
+
+trigger:
+  - master
+
+pool:
+  vmImage: 'Ubuntu 16.04'
+  
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
+  inputs:
+    command: restore
+    projects: '**/*.csproj'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Run Unit Tests'
+  condition: succeeded()
+  inputs:
+    projects: 'test/**/*.csproj'
+    arguments: '--configuration $(BuildConfiguration)'
+    command: test
+    publishTestResults: true
+
+- task: NuGetToolInstaller@0
+  inputs:
+    versionSpec: '5.1.0'  # Optional
+    
+- task: DotNetCoreCLI@2
+  displayName: 'Build All Projects (master)'
+  inputs:
+    projects: 'src/**/*.csproj'
+    arguments: '--configuration $(BuildConfiguration)'
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+
+- task: NuGetCommand@2
+  displayName: 'NuGet push'
+  inputs:
+    command: push
+    nuGetFeedType: external
+    publishFeedCredentials: 'Nuget'
+    packagesToPush: 'src/**/*.nupkg'
+    allowPackageConflicts: true
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/master'))

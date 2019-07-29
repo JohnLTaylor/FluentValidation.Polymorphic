@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>John Taylor</Authors>
+    <VersionPrefix Condition="'$(BUILD_BUILDNUMBER)' == ''">1.0.0</VersionPrefix>
+    <VersionPrefix Condition="'$(BUILD_BUILDNUMBER)' != ''">$(BUILD_BUILDNUMBER)</VersionPrefix>
+    <PackageProjectUrl>https://github.com/JohnLTaylor/FluentValidation.Validators.Polymorphic</PackageProjectUrl>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="8.4.0" />
+  </ItemGroup>
+
+</Project>
